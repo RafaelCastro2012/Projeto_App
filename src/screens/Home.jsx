@@ -7,6 +7,7 @@
 import { ScrollView, View, Image, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //Import de exemplo em uma variável da imagem morango 
 import morangoDoAmor from '../../res/img/morango.png';
@@ -29,6 +30,7 @@ import kitDeTresDoces from '../../res/img/kitDeTres.png';
 import kitDeDoisDoces from '../../res/img/kitDeDoisDoces.jpg';
 import cocadaCremosa from '../../res/img/cocadacremosa.jpg';
 import cocadaCremosaMaracuja from '../../res/img/cocadacremosademaracuja.jpg';
+
 
 
 
@@ -269,6 +271,8 @@ export default function Home({ navigation }) {
                             <Text style={{fontFamily: 'PatuaOne-Regular',textAlign: 'center',fontSize: 18,padding: 20}}>UVA DO AMOR</Text>
                     </View>
                     </TouchableOpacity>
+
+                    
                     
                 </ScrollView>
             </SafeAreaView>
