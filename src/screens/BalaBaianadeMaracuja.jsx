@@ -1,40 +1,30 @@
 import { ScrollView, View, Image, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import balaBaianaDeMaracuja from '../../res/img/balabaianademaracuja.jpg';;
+import balaBaianaDeMaracuja from '../../res/img/balabaianademaracuja.jpg';
+import HeaderProduct from "../components/headerProduct";
+import DescriptionProduct from "../components/descriptionProduct";
+import ButtonProduct from "../components/buttonProduct";
 
 export default function BalaBaianadeMaracuja({ navigation }) {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#4F4132' }}>
                 <ScrollView>
-                    <View>
-                        <Ionicons style={{ padding: 10, color: "#FFFFFF" }} name="arrow-back" size={25} onPress={() => navigation.navigate('Home')}/>
-                        <Image style={styles.imgProdutos} source={balaBaianaDeMaracuja} />
-                    </View>
 
-                    <View>
-                        <Text style={{ fontFamily: 'PatuaOne-Regular', fontSize: 25, padding: 20, color: "#FFFFFF" }}>BALA BAIANA DE MARACUJA</Text>
-                        <Text style={{ fontFamily: 'PatuaOne-StackSansText-VariableFont_wght', fontSize: 20, marginLeft: 20, color: "#FFFFFF" }}>
-                            Bala coberta por caramelo, recheado de beijinho de maracujá no seu interior.
-                        </Text>
-                    </View>
-
-                    <View style={{ padding: 17 }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <View style={styles.cardPreco}>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff'}}>R$5,00</Text>
-                            </View>
-
-                            <View style={styles.inputBoxContainer} >
-                            <Ionicons name="logo-whatsapp" size={30} color={'#ffffff'} />
-                            <View>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff' }}>Whatsapp</Text>
-                            </View>
-                            </View>
-                            
-                        </View>
-                    </View>
+                <HeaderProduct
+                                        productImage={balaBaianaDeMaracuja}
+                                        onPressBack={() => navigation.navigate('Home')}
+                                    />
+                
+                                    <DescriptionProduct
+                                        title="BALA BAIANA DE MARACUJA"
+                                        description="Bala coberta por caramelo, recheado de beijinho de maracujá no seu interior."
+                                    />
+                
+                                    <ButtonProduct
+                                        price="R$5,00"
+                                    />
 
                 </ScrollView>
             </SafeAreaView>

@@ -2,6 +2,9 @@ import { ScrollView, View, Image, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import quebraQueixo from '../../res/img/quebraqueixo.png';
+import HeaderProduct from "../components/headerProduct";
+import DescriptionProduct from "../components/descriptionProduct";
+import ButtonProduct from "../components/buttonProduct";
 
 export default function QuebraQueixo({ navigation }) {
     return (

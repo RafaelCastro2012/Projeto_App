@@ -2,40 +2,30 @@ import { ScrollView, View, Image, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import bombomdeMorango from '../../res/img/bombom.png';
+import HeaderProduct from "../components/headerProduct";
+import DescriptionProduct from "../components/descriptionProduct";
+import ButtonProduct from "../components/buttonProduct";
 
 export default function BombomdeMorango({ navigation }) {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#4F4132' }}>
                 <ScrollView>
-                    <View>
-                        <Ionicons style={{ padding: 10, color: "#FFFFFF" }} name="arrow-back" size={25} onPress={() => navigation.navigate('Home')} />
-                        <Image style={styles.imgProdutos} source={bombomdeMorango} />
-                    </View>
 
-                    <View>
-                        <Text style={{ fontFamily: 'PatuaOne-Regular', fontSize: 25, padding: 20, color: "#FFFFFF" }}>BOMBOM DE MORANGO</Text>
-                        <Text style={{ fontFamily: 'PatuaOne-StackSansText-VariableFont_wght', fontSize: 20, marginLeft: 20, color: "#FFFFFF" }}>
-                            Bombom coberto por chocolate preto, recheado por brigadeiro preto
-                            ou brigadeiro branco e acompanhado com morango no seu interior.
-                        </Text>
-                    </View>
-
-                    <View style={{ padding: 17 }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <View style={styles.cardPreco}>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff'}}>R$14,00</Text>
-                            </View>
-
-                            <View style={styles.inputBoxContainer} >
-                            <Ionicons name="logo-whatsapp" size={30} color={'#ffffff'} />
-                            <View>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff' }}>Whatsapp</Text>
-                            </View>
-                            </View>
-                            
-                        </View>
-                    </View>
+            <HeaderProduct
+                                        productImage={bombomdeMorango}
+                                        onPressBack={() => navigation.navigate('Home')}
+                                    />
+                
+                                    <DescriptionProduct
+                                        title="BOMBOM DE MORANGO"
+                                        description="Bombom coberto por chocolate preto, recheado por brigadeiro preto
+                                        ou brigadeiro branco e acompanhado com morango no seu interior."
+                                    />
+                
+                                    <ButtonProduct
+                                        price="R$14,00"
+                                    />
 
                 </ScrollView>
             </SafeAreaView>

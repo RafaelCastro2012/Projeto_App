@@ -3,40 +3,27 @@ import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import balaBaiana from '../../res/img/balabaiana.png';
 import HeaderProduct from "../components/headerProduct";
+import DescriptionProduct from "../components/descriptionProduct";
+import ButtonProduct from "../components/buttonProduct";
 
 export default function BalaBaiana({ navigation }) {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#4F4132' }}>
                 <ScrollView>
-                        
-                        <HeaderProduct
-                            productImage={balaBaiana}
-                            onPressBack={() => navigation.navigate('Home')}
-                        />
+                    <HeaderProduct
+                        productImage={balaBaiana}
+                        onPressBack={() => navigation.navigate('Home')}
+                    />
 
-                    <View>
-                        <Text style={{ fontFamily: 'PatuaOne-Regular', fontSize: 25, padding: 20, color: "#FFFFFF" }}>BALA BAIANA</Text>
-                        <Text style={{ fontFamily: 'PatuaOne-StackSansText-VariableFont_wght', fontSize: 20, marginLeft: 20, color: "#FFFFFF" }}>
-                             Bala coberta por caramelo, recheado com beijinho.
-                        </Text>
-                    </View>
+                    <DescriptionProduct
+                        title="BALA BAIANA"
+                        description="Bala coberta por caramelo, recheado com beijinho."
+                    />
 
-                    <View style={{ padding: 17 }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <View style={styles.cardPreco}>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff'}}>R$5,00</Text>
-                            </View>
-
-                            <View style={styles.inputBoxContainer} >
-                            <Ionicons name="logo-whatsapp" size={30} color={'#ffffff'} />
-                            <View>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff' }}>Whatsapp</Text>
-                            </View>
-                            </View>
-                            
-                        </View>
-                    </View>
+                    <ButtonProduct
+                        price="R$5,00<"
+                    />
 
                 </ScrollView>
             </SafeAreaView>
@@ -59,7 +46,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
     },
     inputBoxContainer: {
-        marginTop: 9 ,
+        marginTop: 9,
         width: 185,
         height: 50,
         alignItems: 'center',

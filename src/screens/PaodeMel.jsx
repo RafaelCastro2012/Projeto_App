@@ -2,6 +2,9 @@ import { ScrollView, View, Image, StyleSheet, Text } from "react-native";
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import olhoDeSogra from '../../res/img/olhodesogra.jpg';
+import HeaderProduct from "../components/headerProduct";
+import DescriptionProduct from "../components/descriptionProduct";
+import ButtonProduct from "../components/buttonProduct";
 
 export default function PaodeMel({ navigation }) {
     return (

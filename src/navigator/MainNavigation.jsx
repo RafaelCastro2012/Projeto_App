@@ -1,5 +1,7 @@
 import MorangodoAmor from "../screens/MorangodoAmor";
 import Home from "../screens/Home";
+import BalaBaiana from "../screens/BalaBaiana";
+import BalaBaianadeMaracuja from "../screens/BalaBaianadeMaracuja";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
@@ -13,6 +15,8 @@ export default function MainNavigation() {
           <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="MorangodoAmor" component={MorangodoAmor} options={{ headerShown: false }} />
+             <Stack.Screen name="BalaBaiana" component={BalaBaiana} options={{ headerShown: false }} />
+            <Stack.Screen name="BalaBaianadeMaracuja" component={BalaBaianadeMaracuja} options={{ headerShown: false }} />
           </Stack.Navigator>
     )
     // TODO: Criar userSelectScreen para definir navegação do usuário
