@@ -1,77 +1,30 @@
-import { ScrollView, View, Image, StyleSheet, Text } from "react-native";
-import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { ScrollView} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import cocadaCremosa from '../../res/img/cocadacremosa.jpg';
-import HeaderProduct from "../components/headerProduct";
-import DescriptionProduct from "../components/descriptionProduct";
-import ButtonProduct from "../components/buttonProduct";
+import DescricaoProduto from "../components/descricaoProduto";
+import CabecalhoProduto from "../components/cabecalhoProduto";
+import BotaoProduto from "../components/botaoProduto";
 
-export default function CocadaCremosa({ navigation }) {
+export default function CocadaCremosadeMaracuja({ navigation }) {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#4F4132' }}>
                 <ScrollView>
-                    <View>
-                        <Ionicons style={{ padding: 10, color: "#FFFFFF" }} name="arrow-back" size={25} onPress={() => navigation.navigate('Home')}/>
-                        <Image style={styles.imgProdutos} source={cocadaCremosa} />
-                    </View>
+                    <CabecalhoProduto
+                        imagemProduto={cocadaCremosa}
+                        botaoVoltar={() => navigation.navigate('Home')}
+                    />
 
-                    <View>
-                        <Text style={{ fontFamily: 'PatuaOne-Regular', fontSize: 25, padding: 20, color: "#FFFFFF" }}>COCADA CREMOSA</Text>
-                        <Text style={{ fontFamily: 'PatuaOne-StackSansText-VariableFont_wght', fontSize: 20, marginLeft: 20, color: "#FFFFFF" }}>
-                            Um doce cremoso, de cocada  com leite condensado.
-                        </Text>
-                    </View>
+                    <DescricaoProduto
+                        titulo="COCADA CREMOSA"
+                        descricao="Um doce cremoso, de cocada com leite condensado, acompanhado com geleia de maracujá."
+                    />
 
-                    <View style={{ padding: 17 }}>
-                        <View style={{ flexDirection: "row" }}>
-                            <View style={styles.cardPreco}>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff'}}>R$12,00</Text>
-                            </View>
-
-                            <View style={styles.inputBoxContainer} >
-                            <Ionicons name="logo-whatsapp" size={30} color={'#ffffff'} />
-                            <View>
-                                <Text style={{ fontFamily: 'PatuaOne-Regular', textAlign: 'center', fontSize: 18, padding: 12, color: '#ffffff' }}>Whatsapp</Text>
-                            </View>
-                            </View>
-                            
-                        </View>
-                    </View>
-
+                    <BotaoProduto
+                        preco="R$12,00"
+                    />
                 </ScrollView>
             </SafeAreaView>
         </SafeAreaProvider>
     )
 }
-
-const styles = StyleSheet.create({
-    imgProdutos: {
-        maxWidth: '100%',
-        height: 400,
-        borderRadius: 20
-    },
-    cardPreco: {
-        width: 125,
-        height: 50,
-        borderRadius: 20,
-        backgroundColor: "#EF2A39",
-        margin: 10,
-        marginLeft: 5,
-    },
-    inputBoxContainer: {
-        marginTop: 9 ,
-        width: 185,
-        height: 50,
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: '#3C2F2F',
-        borderColor: '#000000',
-        borderWidth: 1,
-        borderRadius: 20,
-        width: '40%',
-        marginLeft: 10,
-        paddingHorizontal: 10,
-        marginLeft: 75,
-    },
-})

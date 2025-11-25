@@ -1,28 +1,28 @@
-import { ScrollView, View, Image, StyleSheet, Text } from "react-native";
-import { Ionicons } from "@react-native-vector-icons/ionicons";
+import { ScrollView} from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import balaBaiana from '../../res/img/balabaiana.png';
-import HeaderProduct from "../components/headerProduct";
-import DescriptionProduct from "../components/descriptionProduct";
-import ButtonProduct from "../components/buttonProduct";
+import DescricaoProduto from "../components/descricaoProduto";
+import CabecalhoProduto from "../components/cabecalhoProduto";
+import BotaoProduto from "../components/botaoProduto";
 
 export default function BalaBaiana({ navigation }) {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#4F4132' }}>
                 <ScrollView>
-                    <HeaderProduct
-                        productImage={balaBaiana}
-                        onPressBack={() => navigation.navigate('Home')}
+                    <CabecalhoProduto
+                        imagemProduto={balaBaiana}
+                        botaoVoltar={() => navigation.navigate('Home')}
                     />
 
-                    <DescriptionProduct
-                        title="BALA BAIANA"
-                        description="Bala coberta por caramelo, recheado com beijinho."
+                    <DescricaoProduto
+                        titulo="BALA BAIANA"
+                        descricao="Bala coberta por caramelo, recheado com beijinho."
                     />
 
-                    <ButtonProduct
-                        price="R$5,00<"
+                    <BotaoProduto
+                        preco="R$5,00"
+
                     />
 
                 </ScrollView>
@@ -30,34 +30,3 @@ export default function BalaBaiana({ navigation }) {
         </SafeAreaProvider>
     )
 }
-
-const styles = StyleSheet.create({
-    imgProdutos: {
-        maxWidth: '100%',
-        height: 400,
-        borderRadius: 20
-    },
-    cardPreco: {
-        width: 125,
-        height: 50,
-        borderRadius: 20,
-        backgroundColor: "#EF2A39",
-        margin: 10,
-        marginLeft: 5,
-    },
-    inputBoxContainer: {
-        marginTop: 9,
-        width: 185,
-        height: 50,
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: '#3C2F2F',
-        borderColor: '#000000',
-        borderWidth: 1,
-        borderRadius: 20,
-        width: '40%',
-        marginLeft: 10,
-        paddingHorizontal: 10,
-        marginLeft: 75,
-    },
-})
