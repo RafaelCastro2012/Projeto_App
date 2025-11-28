@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/PatuaOne-Regular.ttf",
+      "sha1": "d9c0328bc6188860c9bfa1d67e2f53fd64f49bfb"
+    },
+    {
+      "path": "assets/fonts/StackSansText-VariableFont_wght.ttf",
+      "sha1": "f3b5d60b402ad8ea108bfb0fe1210da00f0763f5"
+    }
+  ]
+}
