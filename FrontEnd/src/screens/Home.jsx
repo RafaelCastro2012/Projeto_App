@@ -39,10 +39,11 @@ export default function Home({ navigation }) {
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#3E3327' }}>
                 <ScrollView>
-                    <View style={{ minHeight: 120, flexDirection: "row" }}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                    <View style={{ height: 125, width: 50, flexDirection: "row" }}>
                         <Image style={styles.img} source={require('../../res/img/logotcc.png')} />
                     </View>
-
+                    </TouchableOpacity>
                     <View style={styles.inputBoxContainer} >
                     <Ionicons name="search" size={20} />
                         <TextInput placeholderTextColor={'#000000'} placeholder="Pesquisar:" style={styles.input} />

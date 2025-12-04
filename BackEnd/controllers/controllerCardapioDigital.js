@@ -69,6 +69,9 @@ const controllerCardapio = {
     listarProduto: async (req, res) => {
         try {
             const produto = await modelCardapio.listarProduto();
+
+            console.log(produto);
+            
             res.status(200).json(produto);
         }
         catch (erro) {

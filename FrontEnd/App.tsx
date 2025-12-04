@@ -22,7 +22,10 @@ import Cocada from "./src/screens/Cocada"
 import MiniPudim from "./src/screens/MiniPudim"
 import UvadoAmor from "./src/screens/UvadoAmor"
 import BalaBaiana from "./src/screens/BalaBaiana"
+import CadastrarDoce from "./src/screens/CadastrarDoce"
 import ListarDoce from "./src/screens/ListarDoce"
+import AtualizarDoce from "./src/screens/AtualizarDoce"
+
 
 
 export default function App() {
@@ -31,9 +34,11 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="CadastrarDoce" component={CadastrarDoce} options={{ headerShown: false }} />
         <Stack.Screen name="ListarDoce" component={ListarDoce} options={{ headerShown: false }} />
+        <Stack.Screen name="AtualizarDoce" component={AtualizarDoce} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="MorangodoAmor" component={MorangodoAmor} options={{ headerShown: false }} />
         <Stack.Screen name="BombomdeMorango" component={BombomdeMorango} options={{ headerShown: false }} />

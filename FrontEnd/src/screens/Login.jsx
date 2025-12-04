@@ -2,6 +2,7 @@ import { ScrollView, View, Image, StyleSheet, TextInput, Text, TouchableOpacity 
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import axios from 'axios';
+import CadastrarDoce from "./CadastrarDoce";
 
 export default function Login({navigation}) {
 
@@ -27,7 +28,7 @@ export default function Login({navigation}) {
 
             if (response.status === 200) {
 
-                navigation.navigate('Home');
+                navigation.navigate('CadastrarDoce');
             }
             else{
                 Alert.alert('Erro', 'Email ou senha incorretos');
