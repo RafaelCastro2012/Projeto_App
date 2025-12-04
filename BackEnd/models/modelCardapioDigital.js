@@ -7,25 +7,29 @@ const modelCardapio = {
 
     login: async (email, senha) => {
 
-        console.log(email);
+        console.log(senha);
         try {
-            const consulta = await modelCardapio.listarPorEmail(email);
+            const [consulta] = await modelCardapio.listarPorEmail(email);
 
             if (consulta) {
-                const match = await bcrypt.compare(senha, consulta[0].senha)
-                if (match) {
+
+                const validarSenha = await bcrypt.compare(senha, consulta.senha)
+
+                console.log(validarSenha);
+
+                if (validarSenha) {
                     const token = jwt.sign(
-                        { id: consulta[0].id, email: consulta[0].email},
-                        process.env.JWT_SECRET,{
-                            expiresIn: '25m'
-                        }
+                        { id: consulta.id, email: consulta.email },
+                        process.env.JWT_SECRET, {
+                        expiresIn: '25m'
+                    }
                     )
-                    return {token, id:consulta[0].id, nome:consulta[0].nome}
+                    return { token, id: consulta.id, nome: consulta.nome }
                 }
                 return null
             }
             return null
-        } 
+        }
         catch (error) {
             throw error
         }
@@ -33,7 +37,7 @@ const modelCardapio = {
 
     listarPorEmail: async (email) => {
         try {
-           return await executeQuery('SELECT id, nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, senha FROM administrador WHERE email=?', [email])
+            return await executeQuery('SELECT id, nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, senha FROM administrador WHERE email=?', [email])
         } catch (error) {
             throw error
         }
@@ -43,7 +47,7 @@ const modelCardapio = {
     cadastrar: async (nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, senha) => {
         const password = await bcrypt.hash(senha, 10)
         try {
-            return await executeQuery(`INSERT INTO administrador (nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, senha) values (?,?,?,?,?,?,?,?,?,?)`,[nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, password]);
+            return await executeQuery(`INSERT INTO administrador (nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, senha) values (?,?,?,?,?,?,?,?,?,?)`, [nome, cpf, rg, data_nascimento, renumeracao_inicial, renumeracao_atual, observacao, status, email, password]);
         } catch (error) {
             throw error
         }
@@ -76,7 +80,7 @@ const modelCardapio = {
     },
 
     //Atualizar
-    atualizarProduto: async (nome, codigo, preco, ingredientes , descricao, id) => {
+    atualizarProduto: async (nome, codigo, preco, ingredientes, descricao, id) => {
         try {
             return await executeQuery(`UPDATE produto SET nome='${nome}',codigo='${codigo}', preco='${preco}', ingredientes='${ingredientes}',descricao='${descricao}' WHERE id=${id};`)
         } catch (error) {

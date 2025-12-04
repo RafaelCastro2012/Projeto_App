@@ -8,10 +8,9 @@ const controllerCardapio = {
     login: async (req, res) => {
         const { email, senha } = req.body
 
-        console.log(req.body);
-
         try {
             const consultaEmail = await modelCardapio.login(email, senha);
+            
             if (consultaEmail) {
                 res.status(200).json(consultaEmail)
             } else {
