@@ -4,7 +4,9 @@ import { useState } from "react";
 import axios from 'axios';
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
-const AtualizarDoce = ({ navigation }) => {
+const AtualizarDoce = ({ navigation, route }) => {
+    const { id } = route.params;
+
     const [nome, setNome] = useState('');
     const [codigo, setCodigo] = useState('');
     const [preco, setPreco] = useState('');
@@ -25,6 +27,14 @@ const AtualizarDoce = ({ navigation }) => {
     const handleAtualizar = async () => {
         if (!formData.nome || !formData.codigo || !formData.preco || !formData.ingredientes || !formData.descricao) {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
+            return;
+        }
+
+        const dataToSend = {...formData,
+            preco: parseFloat(formData.preco.replace(',', '.')) 
+        };
+        if (isNaN(dataToSend.preco)) {
+            Alert.alert('Erro', 'Por favor, insira um valor numérico válido para o preço.');
             return;
         }
 
@@ -69,7 +79,7 @@ const AtualizarDoce = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View>
-                    <Text style={styles.fonte}>ATUALIZAR PRODUTO</Text>
+                        <Text style={styles.fonte}>ATUALIZAR PRODUTO</Text>
                     </View>
 
                     <View style={{ flex: 2, alignItems: 'center' }}>
@@ -92,7 +102,8 @@ const AtualizarDoce = ({ navigation }) => {
                             placeholder="PRECO:"
                             style={styles.input}
                             onChangeText={(text) => handleInputChange('preco', text)}
-                            value={formData.preco} />
+                            value={formData.preco}
+                            keyboardType="numeric" />
 
                         <TextInput
                             placeholderTextColor={'#3C2C1C'}
