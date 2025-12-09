@@ -45,7 +45,7 @@ export default function CadastrarDoce({ navigation }) {
     }
 
     try {
-      const response = await axios.post('http://10.0.2.2:3002/registrarproduto', formData);
+      const response = await axios.post('http://10.0.2.2:3001/registrarproduto', formData);
 
       if (response.status === 201) {
         setFormData({
@@ -78,9 +78,13 @@ export default function CadastrarDoce({ navigation }) {
       <SafeAreaView style={{ flex: 1, backgroundColor: '#3E3327' }}>
         <ScrollView>
           <View>
-            <Ionicons style={{ padding: 10, color: "#FFFFFF" }} name="list" size={25} onPress ={() => navigation.navigate('ListarDoce')} />
+            <Ionicons style={{ padding: 10, color: "#FFFFFF" }} name="list" size={25} onPress={() => navigation.navigate('ListarDoce')} />
           </View>
           <View style={{ flex: 2, alignItems: 'center' }}>
+
+            <View>
+              <Text style={styles.fonteCor}>CADASTRAR PRODUTO</Text>
+            </View>
 
             <TextInput
               placeholderTextColor={'#3C2C1C'}
@@ -97,20 +101,11 @@ export default function CadastrarDoce({ navigation }) {
               value={formData.codigo} />
 
             <TextInput
-              style={styles.input}
-              keyboardType="numeric" // Usa o teclado numérico
-              value={formData.preco}
-              onChangeText={handlePrecoChange}
               placeholderTextColor={'#3C2C1C'}
-              placeholder="PREÇO:"
-            />
-
-            {/* <TextInput
-                        placeholderTextColor={'#3C2C1C'}
-                        placeholder="PRECO:" 
-                        style={styles.input}
-                        onChangeText={(text) => handleInputChange('preco', text)}
-                        value={formData.preco}/> */}
+              placeholder="PRECO:"
+              style={styles.input}
+              onChangeText={(text) => handleInputChange('preco', text)}
+              value={formData.preco} />
 
             <TextInput
               placeholderTextColor={'#3C2C1C'}
@@ -128,7 +123,7 @@ export default function CadastrarDoce({ navigation }) {
 
             <View style={styles.btn}>
               <TouchableOpacity style={styles.fundoBotao} onPress={handleCadastrar}>
-                <Text style={styles.fonteCor}>ENTRAR</Text>
+                <Text style={styles.fonteCor}>CADASTRAR</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -180,7 +175,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   fonteCor: {
-    color: '#3C2C1C',
+    color: '#FFFFFF',
     fontSize: 20,
     fontFamily: 'PatuaOne-Regular'
   },

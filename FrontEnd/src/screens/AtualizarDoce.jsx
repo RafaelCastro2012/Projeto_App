@@ -1,7 +1,8 @@
-import { ScrollView, View, Image, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
+import { ScrollView, View, Image, StyleSheet, TextInput, Text, TouchableOpacity, Alert } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import axios from 'axios';
+import { Ionicons } from "@react-native-vector-icons/ionicons";
 
 const AtualizarDoce = ({ navigation }) => {
     const [nome, setNome] = useState('');
@@ -9,9 +10,20 @@ const AtualizarDoce = ({ navigation }) => {
     const [preco, setPreco] = useState('');
     const [ingredientes, setIngredientes] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [formData, setFormData] = useState({
+        nome: '',
+        codigo: '',
+        preco: '',
+        ingredientes: '',
+        descricao: '',
+    });
+
+    const handleInputChange = (name, value) => {
+        setFormData({ ...formData, [name]: value });
+    };
 
     const handleAtualizar = async () => {
-        if (!nome || !codigo || !preco || !ingredientes || !descricao) {
+        if (!formData.nome || !formData.codigo || !formData.preco || !formData.ingredientes || !formData.descricao) {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
@@ -51,41 +63,50 @@ const AtualizarDoce = ({ navigation }) => {
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#3E3327' }}>
                 <ScrollView>
+                    <View>
+                        <TouchableOpacity onPress={() => navigation.navigate('CadastrarDoce')}>
+                            <Ionicons style={{ padding: 10, color: "#FFFFFF", height: 50, width: 50 }} name="arrow-back" size={25} onPress={() => navigation.navigate('ListarDoce')} />
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                    <Text style={styles.fonte}>ATUALIZAR PRODUTO</Text>
+                    </View>
+
                     <View style={{ flex: 2, alignItems: 'center' }}>
                         <TextInput
                             placeholderTextColor={'#3C2C1C'}
                             placeholder="NOME:"
                             style={styles.input}
                             onChangeText={(text) => handleInputChange('nome', text)}
-                            value={nome} />
+                            value={formData.nome} />
 
                         <TextInput
                             placeholderTextColor={'#3C2C1C'}
                             placeholder="CODIGO:"
                             style={styles.input}
                             onChangeText={(text) => handleInputChange('codigo', text)}
-                            value={codigo} />
+                            value={formData.codigo} />
 
                         <TextInput
                             placeholderTextColor={'#3C2C1C'}
                             placeholder="PRECO:"
                             style={styles.input}
                             onChangeText={(text) => handleInputChange('preco', text)}
-                            value={preco} />
+                            value={formData.preco} />
 
                         <TextInput
                             placeholderTextColor={'#3C2C1C'}
                             placeholder="INGREDIENTES:"
                             style={styles.inputText}
                             onChangeText={(text) => handleInputChange('ingredientes', text)}
-                            value={ingredientes} />
+                            value={formData.ingredientes} />
 
                         <TextInput
                             placeholderTextColor={'#3C2C1C'}
                             placeholder="DESCRIÇÃO:"
                             style={styles.inputText}
                             onChangeText={(text) => handleInputChange('descricao', text)}
-                            value={descricao} />
+                            value={formData.descricao} />
 
                         <View style={styles.btn}>
                             <TouchableOpacity style={styles.fundoBotao} onPress={handleAtualizar}>
@@ -147,5 +168,12 @@ const styles = StyleSheet.create({
         color: '#3C2C1C',
         fontSize: 20,
         fontFamily: 'PatuaOne-Regular'
+    },
+    fonte: {
+        color: '#ffffff',
+        fontSize: 20,
+        fontFamily: 'PatuaOne-Regular',
+        marginBottom: 20,
+        alignSelf: 'center'
     },
 });

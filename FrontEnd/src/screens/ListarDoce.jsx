@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import AtualizarProduto from './AtualizarDoce';
-import { View, Text, StyleSheet, FlatList, Alert, TouchableOpacity, ScrollView, Image, Pressable } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Alert, Image, TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { Ionicons } from "@react-native-vector-icons/ionicons";
 
@@ -61,16 +60,13 @@ const Listar = ({ navigation }) => {
             <View style={styles.actionButtons}>
 
                 <TouchableOpacity
-                    style={styles.iconButton}
                     onPress={() => handleAtualizar(item.id)}>
-                    <Ionicons name="create-outline" size={22} color="#000000" />
+                    <Ionicons name="pencil-sharp" size={30} color="#000000" />
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.iconButton}
-                    onPress={() => handleDeletar(item.id)}
-                >
-                    <Ionicons name="trash-outline" size={22} color="#000000" />
+                    onPress={() => handleDeletar(item.id)}>
+                    <Ionicons name="trash-outline" size={30} color="#000000" />
                 </TouchableOpacity>
             </View>
         </View>
@@ -79,18 +75,22 @@ const Listar = ({ navigation }) => {
     return (
         <SafeAreaProvider>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#3E3327' }}>
-                    <View>
-                        <TouchableOpacity onPress={() => navigation.navigate('CadastrarDoce')}>
-                            <Ionicons style={{ padding: 10, color: "#FFFFFF", height: 50, width: 50 }} name="add-circle" size={25} onPress={() => navigation.navigate('CadastrarDoce')} />
-                        </TouchableOpacity>
-                    </View>
 
-                    <FlatList
-                        data={doce} 
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id.toString()}
-                        style={styles.list}
-                    />
+                <View style={{ height: 125, width: 50, flexDirection: "row" }}>
+                    <Image style={styles.img} source={require('../../res/img/logotcc.png')} />
+                </View>
+
+                <View style={styles.inputBoxContainer} >
+                    <Ionicons name="search" size={20} />
+                    <TextInput placeholderTextColor={'#000000'} placeholder="Pesquisar:" style={styles.input} />
+                </View>
+
+                <FlatList
+                    data={doce}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id.toString()}
+                    style={styles.list}
+                />
             </SafeAreaView>
         </SafeAreaProvider>
 
@@ -98,52 +98,61 @@ const Listar = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    imageContainer: {
-        marginTop: 10,
-        marginBottom: 10
+    img: {
+        marginTop: 30,
+        marginLeft: 15,
+        width: 100,
+        height: 100
     },
-    image: {
-        width: 87,
-        height: 87
+    inputBoxContainer: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: '#ffffff',
+        borderColor: '#000000',
+        borderWidth: 1,
+        borderRadius: 20,
+        width: '95%',
+        marginLeft: 10,
+        marginTop: 20,
+        paddingHorizontal: 10
     },
-    corpo: {
+    input: {
+        fontSize: 20,
+        fontFamily: 'PatuaOne-Regular',
         flex: 1,
-    },
-    list: {
-        width: '100%'
     },
     item: {
         flexDirection: 'row',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#F3EAC3',
         paddingVertical: 10,
         borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
         alignItems: 'center',
+        width: '95%',
+        alignSelf: 'center',
+        borderRadius: 10,
+        marginTop: 20,
     },
+
     itemText: {
-        color: 'black',
-        flex: 1,
+        color: '#000000',
+        padding: 10,
         textAlign: 'center',
-        fontSize: 10,
+        fontSize: 20,
+        fontFamily: 'PatuaOne-Regular',
+        width: '53%',
     },
     actionButtons: {
-        flex: 1.5,
+        marginLeft: 100,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
     },
-    iconButton: {
-        padding: 6,
-        borderRadius: 6,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    buttonsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '80%',
-        marginTop: 20,
+    fonteCor: {
+        color: '#FFFFFF',
+        fontSize: 20,
+        fontFamily: 'PatuaOne-Regular',
+        marginBottom: 20,
+        alignSelf: 'center'
     },
 });
-
 export default Listar;
