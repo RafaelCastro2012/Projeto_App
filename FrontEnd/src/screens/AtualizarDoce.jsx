@@ -29,28 +29,20 @@ const AtualizarDoce = ({ navigation, route }) => {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
-
-        const dataToSend = {...formData,
-            preco: parseFloat(formData.preco.replace(',', '.')) 
-        };
-        if (isNaN(dataToSend.preco)) {
-            Alert.alert('Erro', 'Por favor, insira um valor numérico válido para o preço.');
-            return;
-        }
-
+        
         const data = {
-            nome,
-            codigo,
-            preco,
-            ingredientes,
-            descricao
+            nome: formData.nome,
+            codigo: formData.codigo,
+            preco:formData.preco,
+            ingredientes: formData.ingredientes,
+            descricao: formData.descricao
         };
 
         try {
             const response = await axios.put(`http://10.0.2.2:3001/editarProduto/${id}`, data)
 
             if (response.status === 200) {
-                Alert.alert('Sucesso', 'Usuário atualizado com sucesso!');
+                Alert.alert('Sucesso', 'Produto atualizado com sucesso!');
                 setNome('');
                 setCodigo('');
                 setPreco('');

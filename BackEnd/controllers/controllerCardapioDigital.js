@@ -83,10 +83,13 @@ const controllerCardapio = {
     atualizarProduto: async (req, res) => {
        
         const { nome, codigo, preco, ingredientes, descricao } = req.body;
+       console.log(req.body)
         try {
+            
             const consulta = await modelCardapio.listarProdutoPorID(req.params.id);
-           console.log(consulta)
+          // console.log(consulta)
             if (consulta.length > 0) {
+                 console.log(nome)
                 await modelCardapio.atualizarProduto(nome, codigo, preco, ingredientes, descricao, req.params.id);
                 res.status(200).json({ msg: "Dados atualizados com sucesso!!!" });
             }

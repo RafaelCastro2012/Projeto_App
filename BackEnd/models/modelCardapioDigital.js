@@ -81,8 +81,9 @@ const modelCardapio = {
 
     //Atualizar
     atualizarProduto: async (nome, codigo, preco, ingredientes, descricao, id) => {
+        console.log(preco)
         try {
-            return await executeQuery(`UPDATE produto SET nome =?, codigo =?, preco =?, ingredientes =?, descricao =? WHERE id =?`)[nome, codigo, preco, ingredientes, descricao, id];
+            return await executeQuery(`UPDATE produto SET nome='${nome}', codigo = '${codigo}', preco ='${preco}', ingredientes ='${ingredientes}', descricao ='${descricao}' WHERE id=${id}`);
         } catch (error) {
             throw error
         }
